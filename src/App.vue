@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <TopMenu/>
+    <v-divider/>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+// <template>
+//   <div id="app">
+//     <nav>
+//       <router-link to="/">Home</router-link> |
+//       <router-link to="/about">About</router-link>
+//     </nav>
+//     <router-view/>
+//   </div>
+// </template>
+
+
+
+
+// import PersonalData from './components/PersonalData';
+import TopMenu from './components/TopMenu.vue';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    // PersonalData,
+    TopMenu,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
