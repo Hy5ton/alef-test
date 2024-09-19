@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PersonalData from '../components/PersonalData.vue'
+import FillableForm from '../components/FillableForm.vue'
+import ResultPreview from '../components/ResultPreview.vue'
 
 Vue.use(VueRouter)
 
@@ -8,12 +9,12 @@ const routes = [
   {
     path: '/',
     name: 'form',
-    component: PersonalData
+    component: FillableForm
   },
   {
     path: '/preview',
     name: 'preview',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: ResultPreview
   }
 ]
 

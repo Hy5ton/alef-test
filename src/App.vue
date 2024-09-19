@@ -1,5 +1,6 @@
 <template>
-  <v-app>
+  <v-app class="custom-font">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <TopMenu/>
     <v-divider/>
     <v-main>
@@ -23,8 +24,8 @@ export default {
 };
 </script>
 
-<style scooped>
-html, body {
-  overflow: hidden;
+<style scoped>
+.custom-font {
+  font-family: 'Montserrat', sans-serif;
 }
 </style>
