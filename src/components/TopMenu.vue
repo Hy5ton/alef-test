@@ -3,8 +3,8 @@
     <img src='/icons/logo.svg' />
     <div class="menu-container">
       <div class="menu-button">
-        <div @click="someMeth('/')">Форма</div>
-        <div @click="someMeth('/preview')">Превью</div>
+        <div @click="goTo('/')">Форма</div>
+        <div @click="goTo('/preview')">Превью</div>
       </div>
     </div>
   </ul>
@@ -16,7 +16,7 @@ export default {
   name: 'TopMenu',
 
   methods: {
-    someMeth(path) {
+    goTo(path) {
       if (this.$route.path !== path) this.$router.push(path)
     }
   }
@@ -27,7 +27,7 @@ export default {
 .menu {
   display: flex;
   align-items: center;
-  height: 10vh;
+  height: 100px;
   position: relative;
 }
 
