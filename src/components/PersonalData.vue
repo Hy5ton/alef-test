@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'PersonalData',
@@ -37,7 +38,13 @@ export default {
     }
   },
 
+  mounted() {
+    console.log(this.$store.state)
+  },
+
   methods: {
+    ...mapMutations('user', ['setUserData']),
+
     addChildren() {
       this.childrenList.push({
         name: null,
@@ -50,7 +57,10 @@ export default {
     },
 
     saveGeneralInformation() {
+      this.setUserData(this.generalInformation)
       this.generalInformation = { ...this.generalInformation, childrens: { value: this.childrenList } };
+      console.log(this.generalInformation)
+      console.log(this.$store.state)
     }
   }
 }
