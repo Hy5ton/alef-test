@@ -2,39 +2,38 @@
   <v-container>
     <div class="personal-data">
       <div class="label">Персональные данные</div>
-      <text-field label='Имя' class="user" style="margin-top: 3vh;" />
-      <text-field label='Возраст' class="user" />
+      <v-text-field v-model="generalInformation.name" label='Имя' class="user" style="margin-top: 3vh;" outlined />
+      <v-text-field v-model="generalInformation.age" label='Возраст' class="user" outlined />
       <div style="display: flex;">
-        <div class="label">Дети (макс. 5)</div>
-        <v-btn v-if="childrenList.length !== 5" @click="addChildren" rounded size="large" outlined style="color: rgba(1, 167, 253, 1);" class="add-children">
+        <div v-if="childrenList.length" class="label">Дети (макс. 5)</div>
+        <v-btn v-if="childrenList.length !== 5" @click="addChildren" rounded large outlined style="color: rgba(1, 167, 253, 1); border-width: 2px;" class="add-children"  >
           <v-icon dark left> mdi-plus </v-icon>
           Добавить ребенка
         </v-btn>
       </div>
       <div v-for="(children, index) in childrenList" :key="children.id" style="margin-top: 3vh;" class="child-list">
-        <text-field v-model="childrenList[index].name" label='Имя' />
-        <text-field v-model="childrenList[index].age" label='Возраст' />
+        <v-text-field v-model="childrenList[index].name " outlined label='Имя' />
+        <v-text-field v-model="childrenList[index].age" outlined label='Возраст' />
         <v-btn @click="deleteChildren(index)" rounded size="large" text style="margin-top: 1vh; color: rgba(1, 167, 253, 1);" class="add-children">
           Удалить
         </v-btn>
       </div>
+      <v-btn v-if="childrenList.length" @click="saveGeneralInformation" depressed dark rounded large style="margin-top: 1vh; background-color: rgba(1, 167, 253, 1)">
+        Сохранить
+      </v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
-import TextField from './TextField.vue'
 
 export default {
   name: 'PersonalData',
 
-  components: { 
-    TextField 
-  },
-
   data() {
     return {
       childrenList: [],
+      generalInformation: {},
     }
   },
 
@@ -47,10 +46,11 @@ export default {
     },
 
     deleteChildren(index) {
-      console.log(this.childrenList)
-      console.log(index)
-      this.childrenList.splice(index + 1, 1)
-      console.log(this.childrenList)
+      this.childrenList.splice(index, 1)
+    },
+
+    saveGeneralInformation() {
+      this.generalInformation = { ...this.generalInformation, childrens: { value: this.childrenList } };
     }
   }
 }
@@ -69,6 +69,7 @@ export default {
 .personal-data {
   margin-top: 4vh;
   width: 50vw;
+  margin: 0 auto;
 }
 
 .add-children {

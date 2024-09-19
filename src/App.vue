@@ -5,37 +5,26 @@
     <v-main>
       <router-view/>
     </v-main>
+    <BottomMenu/>
   </v-app>
 </template>
 
 <script>
-
-// <template>
-//   <div id="app">
-//     <nav>
-//       <router-link to="/">Home</router-link> |
-//       <router-link to="/about">About</router-link>
-//     </nav>
-//     <router-view/>
-//   </div>
-// </template>
-
-
-
-
-// import PersonalData from './components/PersonalData';
 import TopMenu from './components/TopMenu.vue';
+import BottomMenu from './components/BottomMenu.vue';
 
 export default {
   name: 'App',
 
   components: {
-    // PersonalData,
     TopMenu,
+    BottomMenu
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
+
+<style scooped>
+html, body {
+  overflow: hidden;
+}
+</style>

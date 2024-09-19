@@ -3,7 +3,7 @@
     <img src='/icons/logo.svg' />
     <div class="menu-container">
       <div class="menu-button">
-        <div @click="someMeth('/form')">Форма</div>
+        <div @click="someMeth('/')">Форма</div>
         <div @click="someMeth('/preview')">Превью</div>
       </div>
     </div>
